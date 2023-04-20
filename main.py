@@ -26,7 +26,7 @@ class Biudzetas():
     def sukurti_pajamu_irasa(self, obj: Pajamos.obj):
         pass
 
-    def sukurti_islaidu_irasa(self, obj: Islaidos.obj)
+    def sukurti_islaidu_irasa(self, obj: Islaidos.obj):
         pass
 
 
