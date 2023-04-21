@@ -63,7 +63,7 @@ class Pajamos(Irasas):
         return self.suma
     
     def __str__(self) -> dict:
-        return {"Tipas": "Pajamos", "Suma": self.get_suma(), "Gavejas": self.siuntejas, "Komentaras": self.komentaras}
+        return {"Tipas": "Pajamos", "Suma": self.get_suma(), "Siuntejas": self.siuntejas, "Komentaras": self.komentaras}
 
 
 class Biudzetas():
