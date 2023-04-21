@@ -104,9 +104,17 @@ class Biudzetas():
 
 
 
+
+
+# Pagrindinis meniu: ataskaita, balansas, pajamu israsas, islaidu israsas. Biudzetas: islaidu ir pajamu zurnalas.
+import.os
+biudzetas = Biudzetas()
+
 # Pagrindinis meniu: ataskaita, balansas, pajamu israsas, islaidu israsas
   
+
     
+while True:
     print("-Programa Biudzetas-")
     print("------- Meniu -------\n")
     print("1: Ataskaita")
@@ -114,3 +122,30 @@ class Biudzetas():
     print("3: Pajamu israsas")
     print("4: Islaidu israsas")
     print("0: Uzdaryti programa")
+    choice = input("Iveskite savo pasirinkimą (0-4): ")
+    
+    if choice == "1":
+        os.system('cls')
+
+
+    elif choice == "2":
+        os.system('cls')
+
+
+    elif choice == "3":
+        os.system('cls')
+
+
+    elif choice == "4":
+        os.system('cls')
+
+
+    elif choice == "0":
+        os.system('cls')
+        print('------- Gražios dienos! -------')
+        break
+
+       
+
+
+    
