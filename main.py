@@ -2,7 +2,7 @@ import os
 
 class Irasas():
     def __init__(self) -> None:
-        self.__suma: float = 0
+        self.suma: float = 0
         self.komentaras: str = ''
 
 
@@ -11,25 +11,28 @@ class Islaidos(Irasas):
         super().__init__()
         self.gavejas: str = None
 
-    def __sub_suma(self, suma: float, gavejas: str) -> float:
-        temp = abs(self.__suma - suma)
-        self.__suma -= temp
+    def __sub_suma(self, suma: float) -> float:
+        temp = abs(self.suma - suma)
+        self.suma -= temp
 
     def main(self):
         set_gavejas = input("set gavejas: ")
+        set_komentaras = set_komentaras = input("Komentaras: ")
+        self.komentaras = set_komentaras
+        self.siuntejas = set_gavejas
         try:
             set_suma = float(input("set suma: "))
         except:
             print("NAN")
         else:
-            self.__sub_suma(set_suma, set_gavejas)
-            return self.__str__(self)
+            self.__sub_suma(set_suma)
+            return self.__str__()
     
     def get_suma(self):
-        return self.__suma
+        return self.suma
     
     def __str__(self):
-        return {"Tipas": "Islaidos", "Suma": self.get_suma(), "Gavejas": self.gavejas}
+        return {"Tipas": "Islaidos", "Suma": self.get_suma(), "Gavejas": self.gavejas,  "Komentaras": self.komentaras}
 
 
 
@@ -40,22 +43,24 @@ class Pajamos(Irasas):
         super().__init__()
         self.siuntejas: str = None
 
-    def __add_suma(self, suma: float, siuntejas: str) -> float:
-        self.__suma = abs(self.__suma + suma)
+    def add_suma(self, suma: float) -> float:
+        self.suma = abs(self.suma + suma)
 
     def main(self):
         set_siuntejas = input("set gavejas: ")
-        set_komentaras = input("Komentaras")
+        set_komentaras = input("Komentaras: ")
+        self.komentaras = set_komentaras
+        self.siuntejas = set_siuntejas
         try:
             set_suma = float(input("set suma: "))
         except:
             print("NAN")
         else:
-            self.__add_suma(set_suma, set_siuntejas)
-            return self.__str__(self)
+            self.add_suma(set_suma)
+            return self.__str__()
     
     def get_suma(self):
-        return self.__suma
+        return self.suma
     
     def __str__(self) -> dict:
         return {"Tipas": "Pajamos", "Suma": self.get_suma(), "Gavejas": self.siuntejas, "Komentaras": self.komentaras}
