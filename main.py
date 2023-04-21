@@ -81,3 +81,13 @@ class Biudzetas():
 
 
 
+# Pagrindinis meniu: ataskaita, balansas, pajamu israsas, islaidu israsas
+    
+    
+    print("-Programa Biudzetas-")
+    print("------- Meniu -------\n")
+    print("1: Ataskaita")
+    print("2: Balansas")
+    print("3: Pajamu israsas")
+    print("4: Islaidu israsas")
+    print("0: Uzdaryti programa")
