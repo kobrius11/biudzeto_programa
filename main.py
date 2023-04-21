@@ -2,7 +2,7 @@ import os
 
 class Irasas():
     def __init__(self) -> None:
-        self.suma: float = 0
+        self.__suma: float = 0
         self.komentaras: str = ''
 
 
@@ -12,27 +12,24 @@ class Islaidos(Irasas):
         self.gavejas: str = None
 
     def __sub_suma(self, suma: float) -> float:
-        temp = abs(self.suma - suma)
-        self.suma -= temp
+        self.__suma -= abs(self.__suma - suma)
 
     def main(self):
-        set_gavejas = input("set gavejas: ")
-        set_komentaras = set_komentaras = input("Komentaras: ")
-        self.komentaras = set_komentaras
-        self.gavejas = set_gavejas
+        self.komentaras = input("Komentaras: ")
+        self.gavejas = input("set gavejas: ")
         try:
             set_suma = float(input("set suma: "))
         except:
             print("NAN")
         else:
             self.__sub_suma(set_suma)
-            return self.__str__()
+            return self
     
     def get_suma(self):
-        return self.suma
+        return self.__suma
     
     def __str__(self):
-        return {"Tipas": "Islaidos", "Suma": self.get_suma(), "Gavejas": self.gavejas,  "Komentaras": self.komentaras}
+        return f"Siuntejas: {self.gavejas}. Komentaras {self.komentaras}. Suma: {self.get_suma()}" #{"Tipas": "Islaidos", "Suma": self.get_suma(), "Gavejas": self.gavejas,  "Komentaras": self.komentaras}
 
 
 class Pajamos(Irasas):
@@ -40,27 +37,25 @@ class Pajamos(Irasas):
         super().__init__()
         self.siuntejas: str = None
 
-    def add_suma(self, suma: float) -> float:
-        self.suma = abs(self.suma + suma)
+    def __add_suma(self, suma: float) -> float:
+        self.__suma = abs(self.__suma + suma)
 
     def main(self):
-        set_siuntejas = input("set gavejas: ")
-        set_komentaras = input("Komentaras: ")
-        self.komentaras = set_komentaras
-        self.siuntejas = set_siuntejas
+        self.komentaras = input("Komentaras: ")
+        self.siuntejas = input("set siuntejas: ")
         try:
             set_suma = float(input("set suma: "))
         except:
             print("NAN")
         else:
-            self.add_suma(set_suma)
-            return self.__str__()
+            self.__add_suma(set_suma)
+            return self
     
     def get_suma(self):
-        return self.suma
+        return self.__suma
     
     def __str__(self) -> dict:
-        return {"Tipas": "Pajamos", "Suma": self.get_suma(), "Siuntejas": self.siuntejas, "Komentaras": self.komentaras}
+        return f"Siuntejas: {self.siuntejas}. Komentaras {self.komentaras}. Suma: {self.get_suma()}" #{"Tipas": "Pajamos", "Suma": self.get_suma(), "Siuntejas": self.siuntejas, "Komentaras": self.komentaras}
 
 
 class Biudzetas():
@@ -78,16 +73,17 @@ class Biudzetas():
         return: total_suma kiek pajamu, kiek islaidu is viso
         """
         for elm in self.zurnalas:
-            if elm["Tipas"] == "Pajamos":
-                self.pajamos += elm["Suma"]
-                self.total += elm["Suma"]
-            if elm["Tipas"] == "Islaidos":
-                self.islaidos += elm["Suma"]
-                self.total += elm["Suma"]
+            if isinstance(elm, Pajamos):
+                self.pajamos += elm.get_suma()
+                self.total += elm.get_suma()
+            if isinstance(elm, Islaidos):
+                self.islaidos += elm.get_suma()
+                self.total += elm.get_suma()
+
             try:
-                print(f"{elm['Tipas']}, {elm['Suma']}, {elm['Siuntejas']}, {elm['Komentaras']}")
+                print(f"Pajamos, {elm.get_suma()}, {elm.siuntejas}, {elm.komentaras}")
             except:
-                print(f"{elm['Tipas']}, {elm['Suma']}, {elm['Gavejas']}, {elm['Komentaras']}")
+                print(f"Pajamos, {elm.get_suma()}, {elm.gavejas}, {elm.komentaras}")
             continue
 
 
@@ -110,7 +106,8 @@ class Biudzetas():
         return: pajamos.suma, pajamos.siuntejas
         """
         pajamu_irasas = Pajamos()
-        self.zurnalas.append(pajamu_irasas.main())
+        pajamu_irasas.main()
+        self.zurnalas.append(pajamu_irasas)
 
 
     def sukurti_islaidu_irasa(self):
@@ -123,7 +120,8 @@ class Biudzetas():
         return: Biudzetas.zurnalas.update({obj.siuntejas: obj.suma})
         """
         islaidu_irasas = Islaidos()
-        self.zurnalas.append(islaidu_irasas.main())
+        islaidu_irasas.main()
+        self.zurnalas.append(islaidu_irasas)
 
 # Pagrindinis meniu: ataskaita, balansas, pajamu israsas, islaidu israsas. Biudzetas: islaidu ir pajamu zurnalas.
 biudzetas = Biudzetas()
@@ -139,29 +137,24 @@ while True:
     print("4: Islaidu israsas")
     print("0: Uzdaryti programa")
     choice = input("Iveskite savo pasirinkimą (0-4): ")
-    
+    os.system('cls')
     if choice == "1":
-        os.system('cls')
         biudzetas.ataskaita()
         input("press any key")
 
     elif choice == "2":
-        os.system('cls')
         biudzetas.balansas()
         input("press any key")
 
     elif choice == "3":
-        os.system('cls')
         biudzetas.sukurti_pajamu_irasa()
         input("press any key")
 
     elif choice == "4":
-        os.system('cls')
         biudzetas.sukurti_islaidu_irasa()
         input("press any key")
 
     elif choice == "0":
-        os.system('cls')
         print('------- Gražios dienos! -------')
         break
 
