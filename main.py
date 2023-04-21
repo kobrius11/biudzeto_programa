@@ -19,7 +19,7 @@ class Islaidos(Irasas):
         set_gavejas = input("set gavejas: ")
         set_komentaras = set_komentaras = input("Komentaras: ")
         self.komentaras = set_komentaras
-        self.siuntejas = set_gavejas
+        self.gavejas = set_gavejas
         try:
             set_suma = float(input("set suma: "))
         except:
@@ -69,6 +69,7 @@ class Pajamos(Irasas):
 class Biudzetas():
     def __init__(self) -> None:
         self.zurnalas: list = []
+
         self.total = 0
         self.islaidos = 0
         self.pajamos = 0
@@ -81,13 +82,12 @@ class Biudzetas():
         return: total_suma kiek pajamu, kiek islaidu is viso
         """
         for elm in self.zurnalas:
-            for el in elm:
-                if el == "Pajamos":
-                    self.pajamos += elm["Suma"]
-                    self.total += elm["Suma"]
-                if el == "Islaidos":
-                    self.islaidos += elm["Suma"]
-                    self.total -= elm["Suma"]
+            if elm["Tipas"] == "Pajamos":
+                self.pajamos += elm["Suma"]
+                self.total += elm["Suma"]
+            if elm["Tipas"] == "Islaidos":
+                self.islaidos += elm["Suma"]
+                self.total -= elm["Suma"]
             try:
                 print(f"{elm['Tipas']}, {elm['Suma']}, {elm['Siuntejas']}, {elm['Komentaras']}")
             except:
@@ -103,8 +103,7 @@ class Biudzetas():
 
         return: pajamu sumos + islaidu sumos,
         """
-        self.ataskaita()
-        return self.total
+        print(f"Total: {self.total}, Islaidos: {self.islaidos}, Pajamos: {self.pajamos}")
 
 
     def sukurti_pajamu_irasa(self):
@@ -144,6 +143,7 @@ biudzetas = Biudzetas()
 
     
 while True:
+    os.system('cls')
     print("-Programa Biudzetas-")
     print("------- Meniu -------\n")
     print("1: Ataskaita")
@@ -156,27 +156,27 @@ while True:
     if choice == "1":
         os.system('cls')
         biudzetas.ataskaita()
-        input()
+        input("press any key")
 
 
     elif choice == "2":
         os.system('cls')
         biudzetas.balansas()
 
-        input()
+        input("press any key")
 
 
     elif choice == "3":
         os.system('cls')
         biudzetas.sukurti_pajamu_irasa()
 
-        input()
+        input("press any key")
 
 
     elif choice == "4":
         os.system('cls')
         biudzetas.sukurti_islaidu_irasa()
-        input()
+        input("press any key")
 
 
     elif choice == "0":
