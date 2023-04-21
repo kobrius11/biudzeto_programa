@@ -3,37 +3,59 @@ class Irasas():
         self.__suma: float = 0
         self.komentaras: str = ''
 
-    def __add_suma(self, suma):
-        pass
-
-    def __sub_suma(self, suma):
-        pass
-    
-
-
 
 class Islaidos(Irasas):
-    def __init__(self, gavejas) -> None:
+    def __init__(self) -> None:
         super().__init__()
-        self.gavejas: str = gavejas
+        self.gavejas: str = None
 
     def __sub_suma(self, suma: float, gavejas: str) -> float:
-        super().__sub_suma()
+        temp = abs(self.__suma - suma)
+        self.__suma -= temp
+
+    def main(self):
+        set_gavejas = input("set gavejas: ")
+        try:
+            set_suma = float(input("set suma: "))
+        except:
+            print("NAN")
+        else:
+            self.__sub_suma(set_suma, set_gavejas)
+            return self.__str__(self)
+    
+    def get_suma(self):
+        return self.__suma
+    
+    def __str__(self):
+        return {"Tipas": "Islaidos", "Suma": self.get_suma(), "Gavejas": self.gavejas}
 
 
 
 
 
 class Pajamos(Irasas):
-    def __init__(self, siuntejas) -> None:
+    def __init__(self) -> None:
         super().__init__()
-        self.siuntejas: str = siuntejas
+        self.siuntejas: str = None
 
     def __add_suma(self, suma: float, siuntejas: str) -> float:
-        super().__add_suma()
+        self.suma = abs(self.__suma + suma)
 
-
-
+    def main(self):
+        set_siuntejas = input("set gavejas: ")
+        try:
+            set_suma = float(input("set suma: "))
+        except:
+            print("NAN")
+        else:
+            self.__add_suma(set_suma, set_siuntejas)
+            return self.__str__(self)
+    
+    def get_suma(self):
+        return self.__suma
+    
+    def __str__(self) -> dict:
+        return {"Tipas": "Pajamos", "Suma": self.get_suma(), "Gavejas": self.siuntejas}
 
 
 class Biudzetas():
@@ -56,6 +78,7 @@ class Biudzetas():
         return: pajamu sumos + islaidu sumos,
         """
         pass
+
 
     def sukurti_pajamu_irasa(self, obj: Pajamos.obj):
         """
@@ -83,44 +106,13 @@ class Biudzetas():
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # Pagrindinis meniu: ataskaita, balansas, pajamu israsas, islaidu israsas. Biudzetas: islaidu ir pajamu zurnalas.
 import.os
 biudzetas = Biudzetas()
+
+# Pagrindinis meniu: ataskaita, balansas, pajamu israsas, islaidu israsas
+  
+
     
 while True:
     print("-Programa Biudzetas-")
