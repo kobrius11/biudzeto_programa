@@ -35,9 +35,6 @@ class Islaidos(Irasas):
         return {"Tipas": "Islaidos", "Suma": self.get_suma(), "Gavejas": self.gavejas,  "Komentaras": self.komentaras}
 
 
-
-
-
 class Pajamos(Irasas):
     def __init__(self) -> None:
         super().__init__()
@@ -69,7 +66,6 @@ class Pajamos(Irasas):
 class Biudzetas():
     def __init__(self) -> None:
         self.zurnalas: list = []
-
         self.total = 0
         self.islaidos = 0
         self.pajamos = 0
@@ -87,15 +83,13 @@ class Biudzetas():
                 self.total += elm["Suma"]
             if elm["Tipas"] == "Islaidos":
                 self.islaidos += elm["Suma"]
-                self.total -= elm["Suma"]
+                self.total += elm["Suma"]
             try:
                 print(f"{elm['Tipas']}, {elm['Suma']}, {elm['Siuntejas']}, {elm['Komentaras']}")
             except:
                 print(f"{elm['Tipas']}, {elm['Suma']}, {elm['Gavejas']}, {elm['Komentaras']}")
             continue
 
-
-           
 
     def balansas(self):
         """
@@ -131,17 +125,10 @@ class Biudzetas():
         islaidu_irasas = Islaidos()
         self.zurnalas.append(islaidu_irasas.main())
 
-
-
-
 # Pagrindinis meniu: ataskaita, balansas, pajamu israsas, islaidu israsas. Biudzetas: islaidu ir pajamu zurnalas.
-
 biudzetas = Biudzetas()
 
-# Pagrindinis meniu: ataskaita, balansas, pajamu israsas, islaidu israsas
-  
-
-    
+# Pagrindinis meniu: ataskaita, balansas, pajamu israsas, islaidu israsas  
 while True:
     os.system('cls')
     print("-Programa Biudzetas-")
@@ -158,26 +145,20 @@ while True:
         biudzetas.ataskaita()
         input("press any key")
 
-
     elif choice == "2":
         os.system('cls')
         biudzetas.balansas()
-
         input("press any key")
-
 
     elif choice == "3":
         os.system('cls')
         biudzetas.sukurti_pajamu_irasa()
-
         input("press any key")
-
 
     elif choice == "4":
         os.system('cls')
         biudzetas.sukurti_islaidu_irasa()
         input("press any key")
-
 
     elif choice == "0":
         os.system('cls')
