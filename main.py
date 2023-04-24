@@ -183,7 +183,7 @@ while True:
         print('------- Gražios dienos! -------')
         break
 
-       
+#belekas delevop
 
 
     
