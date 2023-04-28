@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+#ignore files
+new.py
+biudzetas.p
+biudzetas1.pkl
+biudzetas1.pickle
