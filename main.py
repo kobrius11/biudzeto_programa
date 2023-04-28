@@ -203,8 +203,53 @@ class Biudzetas():
             self.__islaidos += islaidu_irasas.get_suma()
             self.__total += islaidu_irasas.get_suma()
             self.__zurnalas.append(islaidu_irasas)
-            mano_logeris.info(f"Islaidu irasas: suma - {islaidu_irasas.get_suma()}, siuntejas - {islaidu_irasas.gavejas}, komentaras - {islaidu_irasas.komentaras}")
 
+# Pagrindinis meniu: ataskaita, balansas, pajamu israsas, islaidu israsas. Biudzetas: islaidu ir pajamu zurnalas.
+biudzetas = Biudzetas()
+biudzetas.__total = 12
+biudzetas.__islaidos = 150
+biudzetas.__pajamos = 155
+
+
+
+# Pagrindinis meniu: ataskaita, balansas, pajamu israsas, islaidu israsas  
+while True:
+    os.system('cls')
+    print("-Programa Biudzetas-")
+    print("------- Meniu -------\n")
+    print("1: Ataskaita")
+    print("2: Balansas")
+    print("3: Pajamu israsas")
+    print("4: Islaidu israsas")
+    print("0: Uzdaryti programa")
+    choice = input("Iveskite savo pasirinkimą (0-4): ")
+    os.system('cls')
+    if choice == "1":
+        biudzetas.ataskaita()
+        input("press any key")
+
+    elif choice == "2":
+        biudzetas.balansas()
+        input("press any key")
+
+    elif choice == "3":
+        biudzetas.sukurti_pajamu_irasa()
+        input("press any key")
+
+    elif choice == "4":
+        biudzetas.sukurti_islaidu_irasa()
+        input("press any key")
+
+    elif choice == "0":
+        print('------- Gražios dienos! -------')
+        break
+
+#belekas delevop
+
+#Belekas
+
+#develop
+       
 
 
 
